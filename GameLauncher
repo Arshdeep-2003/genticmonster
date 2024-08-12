@@ -1,0 +1,67 @@
+mport java.util.Scanner;
+
+public class GameLauncher {
+    public static void main(String[] args) {
+        MonsterManager manager = new MonsterManager();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Options:");
+            System.out.println("1. Create Monster");
+            System.out.println("2. View Monsters");
+            System.out.println("3. Breed Monsters");
+            System.out.println("4. Save Game");
+            System.out.println("5. Load Game");
+            System.out.println("6. Exit");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();  // Consume newline
+
+            switch (choice) {
+                case 1:
+                    createMonster(manager, scanner);
+                    break;
+                case 2:
+                    manager.displayMonsters(true);
+                    break;
+                case 3:
+                    // Implement breeding logic.
+                    break;
+                case 4:
+                    try {
+                        manager.saveGame("game_state.txt");
+                        System.out.println("Game saved successfully.");
+                    } catch (IOException e) {
+                        System.out.println("Error saving game: " + e.getMessage());
+                    }
+                    break;
+                case 5:
+                    // Implement loading logic.
+                    break;
+                case 6:
+                    System.out.println("Exiting the game...");
+                    return;
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
+    }
+
+    private static void createMonster(MonsterManager manager, Scanner scanner) {
+        System.out.println("Enter name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter color:");
+        String color = scanner.nextLine();
+
+        System.out.println("Enter strength:");
+        int strength = scanner.nextInt();
+
+        System.out.println("Enter speed:");
+        int speed = scanner.nextInt();
+
+        Monster monster = new FlyingMonster(name, color, strength, speed, 5); // Example: creating a FlyingMonster
+        manager.addMonster(monster);
+        System.out.println("Monster created successfully.");
+    }
+}
