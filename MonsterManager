@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+
+class MonsterManager {
+    private ArrayList<Monster> monsters = new ArrayList<>();
+
+    public void addMonster(Monster m) {
+        monsters.add(m);
+    }
+
+    public void breedMonsters(int index1, int index2) {
+        // Logic for breeding monsters and creating a new one.
+    }
+
+    public void saveGame(String filename) throws IOException {
+        for (Monster monster : monsters) {
+            monster.saveToFile(filename);
+        }
+    }
+
+    public void loadGame(String filename) {
+        // Logic to load the game state and restore monsters.
+    }
+
+    public void displayMonsters(boolean detailed) {
+        for (Monster monster : monsters) {
+            if (detailed) {
+                System.out.println(monster.toString());
+            } else {
+                System.out.println(monster.name);
+            }
+        }
+    }
+}
+
