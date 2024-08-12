@@ -1,0 +1,35 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+abstract class Monster {
+    protected String name;
+    protected String color;
+    protected int strength;
+    protected int speed;
+
+    public Monster(String name, String color, int strength, int speed) {
+        this.name = name;
+        this.color = color;
+        this.strength = strength;
+        this.speed = speed;
+    }
+
+    public void saveToFile(String filename) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+            writer.write(toString() + "\n");
+        }
+    }
+
+    public static Monster loadFromFile(String filename) {
+        // Implementation of loading logic will go here.
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return name + "," + color + "," + strength + "," + speed;
+    }
+
+    public abstract void performSpecialAbility();
+}
