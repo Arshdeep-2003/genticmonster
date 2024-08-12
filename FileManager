@@ -1,0 +1,19 @@
+mport java.io.*;
+import java.util.ArrayList;
+
+class FileManager {
+    public static void saveMonsters(ArrayList<Monster> monsters, String filename) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (Monster monster : monsters) {
+                writer.write(monster.toString() + "\n");
+            }
+        }
+    }
+
+    public static ArrayList<Monster> loadMonsters(String filename) throws IOException {
+        ArrayList<Monster> monsters = new ArrayList<>();
+        // Logic to load monsters from a file.
+        return monsters;
+    }
+}
+
